@@ -477,7 +477,7 @@
     .drawer-control{padding:9px 12px;border:1px solid var(--line);border-radius:11px;background:var(--surface-solid);color:var(--text);font:inherit;font-size:13px;font-weight:850;cursor:pointer}
     .drawer-control:hover,.drawer-control:focus-visible{border-color:var(--accent);outline:2px solid var(--focus)}
     .drawer-body{scroll-behavior:auto;overflow-anchor:none}
-    body.lesson-open .app{pointer-events:none}
+    body.lesson-open .shell{pointer-events:none}
     body.lesson-open .motion-backdrop,body.lesson-open .ambient-grid{display:none}
     .lesson-document{max-width:1040px;margin:auto;padding-bottom:80px;contain:layout style}
     .lesson-intro{font-size:18px;line-height:2;margin:0 0 20px}
@@ -550,6 +550,53 @@
     .projector-mode .cover-slide h1,.projector-mode .cover-slide h1 *{font-size:inherit!important;line-height:inherit}
     @media(max-width:900px){.research-grid{grid-template-columns:1fr;overflow:visible}.semantic-visual{min-height:250px;order:-1}.lesson-drawer{inset:0;width:100vw;height:100dvh;border-radius:0}.drawer-backdrop{inset:0}.drawer-header{padding-top:max(13px,env(safe-area-inset-top));align-items:flex-start}.drawer-controls{justify-content:flex-start}.research-radar{width:min(78vw,390px)}}
     @media(max-width:640px){.research-slide .slide-frame{padding-bottom:88px}.research-grid{gap:16px}.topic-item{grid-template-columns:minmax(0,1fr) 45px}.term-info{display:block}.topic-link{font-size:18px;padding:14px}.semantic-visual{min-height:235px}.v-stable-distribution{grid-template-columns:1fr;align-items:stretch}.v-stable-distribution span,.v-stable-distribution span.focus{min-height:64px}.v-stable-prism>div{grid-template-columns:1fr}.v-stable-prism>i{display:none}.slide-title-link{width:100%;text-align:center}.research-slide .lead{text-align:center}.topic-list{width:100%}.slide-tools{position:sticky;bottom:8px;left:auto;justify-content:center;margin-top:18px}.lesson-document{padding-inline:0}.lesson-chapter>summary{font-size:18px}.lesson-topic{margin-inline:8px}.lesson-content{padding-inline:14px}.lesson-content p{font-size:16px;text-align:right}.drawer-kicker{display:none}.drawer-title{font-size:19px}.drawer-control{padding:8px 9px}.research-cover{gap:18px}.research-cover .cover-copy{text-align:center}.research-radar{width:min(86vw,350px)}}
+    /* Mobile presentation layout: vertical, independently scrollable slides. */
+    @media(max-width:900px){
+      :root{--topbar:64px;--footer:64px}
+      body{overflow:hidden}
+      .app,.shell{width:100%;height:100dvh;min-height:0}
+      .shell{grid-template-rows:var(--topbar) minmax(0,1fr) var(--footer)}
+      .topbar{min-width:0;padding-right:64px;padding-left:12px}
+      .title-wrap{min-width:0}.deck-title{max-width:calc(100vw - 190px);font-size:12px}
+      .mobile-menu{display:grid!important;position:fixed;top:max(14px,env(safe-area-inset-top));right:max(14px,env(safe-area-inset-right));z-index:44;width:40px;height:40px;background:var(--surface-solid);box-shadow:0 8px 22px rgba(3,31,40,.16)}
+      .sidebar{z-index:42;top:0;right:0;width:min(88vw,340px);height:100dvh;padding:104px 16px 22px;gap:16px;overflow:hidden;transform:translateX(105%)}
+      .sidebar.open{transform:none}.sidebar-backdrop{z-index:38}
+      .section-nav{flex:1;min-height:0;overflow-y:auto;padding-bottom:12px}
+      .stage{min-height:0;padding:0;overflow:hidden}
+      .slide,.slide.mobile-scroll{inset:0;display:block;padding:10px 10px 14px;overflow-x:hidden;overflow-y:auto;overscroll-behavior-y:contain;-webkit-overflow-scrolling:touch;touch-action:pan-y;scrollbar-width:thin;align-content:initial}
+      .slide-frame,.slide.mobile-scroll .slide-frame,.slide-frame.compact-fit{width:100%;height:auto!important;min-height:100%;margin:0;padding:30px 16px 88px;border-radius:20px;display:flex;flex-direction:column;align-items:stretch;justify-content:flex-start;gap:12px;transform:none!important;backdrop-filter:none;overflow:hidden}
+      .slide-frame:after{bottom:70px}.research-slide .kicker{align-self:center;margin-bottom:0;font-size:13px}
+      .slide-title-link{width:100%;text-align:center}.slide h1,.slide h2,.slide h3{text-align:center;overflow-wrap:anywhere}
+      .slide h2{font-size:clamp(27px,7.7vw,38px);line-height:1.35;margin-bottom:2px}
+      .research-slide .lead,.research-cover .lead{max-width:100%;font-size:17px;line-height:1.9;text-align:justify;text-align-last:right;margin:0 0 4px}
+      .research-grid{display:flex;flex-direction:column;gap:16px;min-height:0;overflow:visible}
+      .semantic-visual,body.projector-mode .semantic-visual{order:-1;width:100%;height:auto!important;max-height:none!important;min-height:240px!important;padding:18px;border-radius:19px;overflow:hidden}
+      .semantic-visual :is(.v-network,.v-tree,.v-venn,.v-emblem){max-width:100%;transform:scale(.82);transform-origin:center}
+      .topic-list{width:100%;gap:10px}.topic-item{grid-template-columns:minmax(0,1fr) 45px}.term-info{display:block}
+      .topic-link,body.projector-mode .topic-link{min-height:58px;padding:13px 14px;font-size:18px!important;line-height:1.55;text-align:center;justify-content:center;transform:none!important}.topic-icon{font-size:18px}
+      .slide-tools{position:static!important;inset:auto!important;display:grid;grid-template-columns:1fr 1fr;width:100%;gap:9px;margin-top:auto;padding-top:8px}
+      .slide-tools .lesson-trigger,.slide-tools .source-trigger{width:100%;min-height:44px;font-size:15px}
+      .cover-layout,.research-cover{display:flex;flex-direction:column;gap:20px;align-items:stretch}.cover-copy{text-align:center}
+      .cover-slide h1,.cover-slide h1 *{font-size:clamp(36px,11vw,54px)!important;line-height:1.3!important}
+      .research-radar,body.projector-mode .research-radar{width:min(78vw,320px);max-width:320px;margin:4px auto 0;flex:0 0 auto}.cover-meta{justify-content:center}
+      body.projector-mode .research-slide .slide-frame,body.projector-mode .cover-slide .slide-frame{padding:30px 16px 88px;gap:12px}
+      body.projector-mode .research-grid{display:flex;grid-template-columns:none;gap:16px}
+      body.projector-mode .research-slide .lead,body.projector-mode .research-cover .lead{font-size:18px;line-height:1.85;margin-bottom:4px}
+      body.projector-mode .slide h2{font-size:clamp(29px,8vw,39px)!important;line-height:1.35!important}body.projector-mode .slide .kicker{font-size:14px!important}
+      .bottom-bar{min-width:0;padding:0 12px;gap:8px}.progress-track{min-width:32px}.nav-actions{gap:6px}.nav-btn{min-height:40px;padding:8px 11px}
+      .lesson-drawer{inset:0!important;width:100vw!important;height:100dvh!important;min-width:0!important;border-radius:0}.drawer-backdrop{inset:0!important}
+      .drawer-header{display:grid;grid-template-columns:minmax(0,1fr) auto;padding:12px;padding-top:max(12px,env(safe-area-inset-top));gap:9px}
+      .drawer-controls{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,1fr);width:100%;gap:6px}.drawer-close{position:absolute;top:max(12px,env(safe-area-inset-top));left:12px}.drawer-heading-wrap{padding-left:48px}
+      .drawer-body{padding:16px 12px max(28px,env(safe-area-inset-bottom))}.lesson-chapter>summary{font-size:18px;padding:14px}.lesson-topic{margin-inline:6px}.lesson-topic>summary{font-size:16px;padding:13px}.lesson-content{padding-inline:13px}.lesson-content p{font-size:16px;line-height:2;text-align:right}
+    }
+    @media(max-width:480px){
+      :root{--topbar:60px;--footer:60px}.top-actions .optional{display:none}.topbar{padding-right:60px}.deck-title{display:none}
+      .slide,.slide.mobile-scroll{padding:8px}
+      .slide-frame,.slide.mobile-scroll .slide-frame,.slide-frame.compact-fit,body.projector-mode .research-slide .slide-frame,body.projector-mode .cover-slide .slide-frame{padding:26px 13px 82px;border-radius:17px}
+      .slide h2{font-size:clamp(25px,8vw,34px)}.semantic-visual,body.projector-mode .semantic-visual{min-height:220px!important;padding:13px}
+      .v-stable-triad{grid-template-columns:1fr}.v-stable-triad span{min-height:62px}.v-stable-triad strong{grid-column:auto}.v-stable-meters div{grid-template-columns:1fr;gap:6px}.v-stable-hub>div,.v-stable-prism>div{grid-template-columns:1fr}.v-stable-prism>i{display:none}.v-stable-distribution{grid-template-columns:1fr}.v-stable-distribution span,.v-stable-distribution span.focus{min-height:62px}
+      .drawer-control{font-size:11px;padding:8px 5px}.progress-copy{font-size:11px;min-width:47px}.nav-btn{font-size:12px;padding-inline:8px}
+    }
     @media(prefers-reduced-motion:reduce){.semantic-visual *,.radar-sweep{animation:none!important}}
 
   </style>
@@ -638,7 +685,7 @@
 
         <article class="slide research-slide" id="market-01-01" data-section="تحقیقات بازار چیست و چه کمکی می‌کند" data-slide-title="تحقیقات بازار چیست و چه کمکی می‌کند" data-lesson-id="lesson-chapter-01">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱</span>
+            <span class="kicker">بخش ۱ · قسمت ۱</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-01" data-term="Market Research: Definition and Role"><h2>تحقیقات بازار چیست و چه کمکی می‌کند</h2></button>
             <p class="lead">تحقیقات بازار، فرایندی منظم برای به‌دست‌آوردن و تفسیر اطلاعات مرتبط با یک پرسش یا تصمیم درباره بازار است.</p>
             <div class="research-grid">
@@ -651,7 +698,7 @@
 
         <article class="slide research-slide" id="market-02-01" data-section="از مسئله کسب‌وکار تا پرسش تحقیق" data-slide-title="از مسئله کسب‌وکار تا پرسش تحقیق" data-lesson-id="lesson-chapter-02">
           <div class="slide-frame">
-            <span class="kicker">فصل ۲ · بخش ۱ از ۲</span>
+            <span class="kicker">بخش ۲ · قسمت ۱ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-02" data-term="From Business Problem to Research Question"><h2>از مسئله کسب‌وکار تا پرسش تحقیق</h2></button>
             
             <div class="research-grid">
@@ -664,7 +711,7 @@
 
         <article class="slide research-slide" id="market-02-02" data-section="از مسئله کسب‌وکار تا پرسش تحقیق" data-slide-title="از مسئله کسب‌وکار تا پرسش تحقیق" data-lesson-id="lesson-chapter-02">
           <div class="slide-frame">
-            <span class="kicker">فصل ۲ · بخش ۲ از ۲</span>
+            <span class="kicker">بخش ۲ · قسمت ۲ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-02" data-term="From Business Problem to Research Question"><h2>از مسئله کسب‌وکار تا پرسش تحقیق</h2></button>
             <p class="lead">پرسش تحقیق بیان روشن مجهولی است که بررسی می‌کنیم.</p>
             <div class="research-grid">
@@ -677,7 +724,7 @@
 
         <article class="slide research-slide" id="market-03-01" data-section="طراحی مسیر تحقیق پیش از گردآوری داده" data-slide-title="طراحی مسیر تحقیق پیش از گردآوری داده" data-lesson-id="lesson-chapter-03">
           <div class="slide-frame">
-            <span class="kicker">فصل ۳</span>
+            <span class="kicker">بخش ۳ · قسمت ۱</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-03" data-term="Research Design Before Data Collection"><h2>طراحی مسیر تحقیق پیش از گردآوری داده</h2></button>
             <p class="lead">طرح تحقیق، توضیح پیوسته‌ای است از اینکه چگونه از پرسش به پاسخ قابل دفاع خواهیم رسید.</p>
             <div class="research-grid">
@@ -690,7 +737,7 @@
 
         <article class="slide research-slide" id="market-04-01" data-section="تحقیق اکتشافی توصیفی و علّی" data-slide-title="تحقیق اکتشافی توصیفی و علّی" data-lesson-id="lesson-chapter-04">
           <div class="slide-frame">
-            <span class="kicker">فصل ۴ · بخش ۱ از ۲</span>
+            <span class="kicker">بخش ۴ · قسمت ۱ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-04" data-term="Exploratory, Descriptive and Causal Research"><h2>تحقیق اکتشافی توصیفی و علّی</h2></button>
             <p class="lead">این تقسیم‌بندی به هدف شناخت مربوط است.</p>
             <div class="research-grid">
@@ -703,7 +750,7 @@
 
         <article class="slide research-slide" id="market-04-02" data-section="تحقیق اکتشافی توصیفی و علّی" data-slide-title="تحقیق اکتشافی توصیفی و علّی" data-lesson-id="lesson-chapter-04">
           <div class="slide-frame">
-            <span class="kicker">فصل ۴ · بخش ۲ از ۲</span>
+            <span class="kicker">بخش ۴ · قسمت ۲ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-04" data-term="Exploratory, Descriptive and Causal Research"><h2>تحقیق اکتشافی توصیفی و علّی</h2></button>
             <p class="lead">تحقیق علّی (Causal Research) می‌خواهد اثر تغییر یک عامل بر پیامد را بررسی کند.</p>
             <div class="research-grid">
@@ -716,7 +763,7 @@
 
         <article class="slide research-slide" id="market-05-01" data-section="داده‌های موجود و داده‌های تازه" data-slide-title="داده‌های موجود و داده‌های تازه" data-lesson-id="lesson-chapter-05">
           <div class="slide-frame">
-            <span class="kicker">فصل ۵</span>
+            <span class="kicker">بخش ۵ · قسمت ۱</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-05" data-term="Secondary and Primary Data"><h2>داده‌های موجود و داده‌های تازه</h2></button>
             <p class="lead">داده اولیه (Primary Data) برای پرسش یا مطالعه فعلی گردآوری می‌شود.</p>
             <div class="research-grid">
@@ -729,7 +776,7 @@
 
         <article class="slide research-slide" id="market-06-01" data-section="روش کیفی کمّی و ترکیبی" data-slide-title="روش کیفی کمّی و ترکیبی" data-lesson-id="lesson-chapter-06">
           <div class="slide-frame">
-            <span class="kicker">فصل ۶</span>
+            <span class="kicker">بخش ۶ · قسمت ۱</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-06" data-term="Qualitative, Quantitative and Mixed Methods"><h2>روش کیفی کمّی و ترکیبی</h2></button>
             <p class="lead">تقسیم‌بندی کیفی و کمّی به جنس شواهد و منطق بررسی آن‌ها مربوط است.</p>
             <div class="research-grid">
@@ -742,7 +789,7 @@
 
         <article class="slide research-slide" id="market-07-01" data-section="مصاحبه عمیق و گروه کانونی" data-slide-title="مصاحبه عمیق و گروه کانونی" data-lesson-id="lesson-chapter-07">
           <div class="slide-frame">
-            <span class="kicker">فصل ۷</span>
+            <span class="kicker">بخش ۷ · قسمت ۱</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-07" data-term="In-depth Interviews and Focus Groups"><h2>مصاحبه عمیق و گروه کانونی</h2></button>
             
             <div class="research-grid">
@@ -755,7 +802,7 @@
 
         <article class="slide research-slide" id="market-08-01" data-section="مشاهده و داده‌های رفتاری" data-slide-title="مشاهده و داده‌های رفتاری" data-lesson-id="lesson-chapter-08">
           <div class="slide-frame">
-            <span class="kicker">فصل ۸</span>
+            <span class="kicker">بخش ۸ · قسمت ۱</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-08" data-term="Observation and Behavioral Data"><h2>مشاهده و داده‌های رفتاری</h2></button>
             <p class="lead">مشاهده یعنی ثبت نظام‌مند رفتار یا رویداد در موقعیت مشخص.</p>
             <div class="research-grid">
@@ -768,7 +815,7 @@
 
         <article class="slide research-slide" id="market-09-01" data-section="پیمایش و طراحی پرسش‌نامه" data-slide-title="پیمایش و طراحی پرسش‌نامه" data-lesson-id="lesson-chapter-09">
           <div class="slide-frame">
-            <span class="kicker">فصل ۹ · بخش ۱ از ۲</span>
+            <span class="kicker">بخش ۹ · قسمت ۱ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-09" data-term="Survey and Questionnaire Design"><h2>پیمایش و طراحی پرسش‌نامه</h2></button>
             <p class="lead">پیمایش (Survey) یک روش پژوهش است که معمولاً با پرسیدن مجموعه‌ای نسبتاً استاندارد از پرسش‌ها، اطلاعات افراد را گردآوری می‌کند.</p>
             <div class="research-grid">
@@ -781,7 +828,7 @@
 
         <article class="slide research-slide" id="market-09-02" data-section="پیمایش و طراحی پرسش‌نامه" data-slide-title="پیمایش و طراحی پرسش‌نامه" data-lesson-id="lesson-chapter-09">
           <div class="slide-frame">
-            <span class="kicker">فصل ۹ · بخش ۲ از ۲</span>
+            <span class="kicker">بخش ۹ · قسمت ۲ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-09" data-term="Survey and Questionnaire Design"><h2>پیمایش و طراحی پرسش‌نامه</h2></button>
             <p class="lead">سؤال باز اجازه می‌دهد فرد با زبان خود پاسخ دهد.</p>
             <div class="research-grid">
@@ -794,7 +841,7 @@
 
         <article class="slide research-slide" id="market-10-01" data-section="اندازه‌گیری و کیفیت ابزار تحقیق" data-slide-title="اندازه‌گیری و کیفیت ابزار تحقیق" data-lesson-id="lesson-chapter-10">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۰ · بخش ۱ از ۲</span>
+            <span class="kicker">بخش ۱۰ · قسمت ۱ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-10" data-term="Measurement and Research Instrument Quality"><h2>اندازه‌گیری و کیفیت ابزار تحقیق</h2></button>
             
             <div class="research-grid">
@@ -807,7 +854,7 @@
 
         <article class="slide research-slide" id="market-10-02" data-section="اندازه‌گیری و کیفیت ابزار تحقیق" data-slide-title="اندازه‌گیری و کیفیت ابزار تحقیق" data-lesson-id="lesson-chapter-10">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۰ · بخش ۲ از ۲</span>
+            <span class="kicker">بخش ۱۰ · قسمت ۲ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-10" data-term="Measurement and Research Instrument Quality"><h2>اندازه‌گیری و کیفیت ابزار تحقیق</h2></button>
             <p class="lead">پایایی (Reliability) به ثبات و سازگاری اندازه‌گیری مربوط است.</p>
             <div class="research-grid">
@@ -820,7 +867,7 @@
 
         <article class="slide research-slide" id="market-11-01" data-section="جامعه آماری و انتخاب نمونه" data-slide-title="جامعه آماری و انتخاب نمونه" data-lesson-id="lesson-chapter-11">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۱ · بخش ۱ از ۲</span>
+            <span class="kicker">بخش ۱۱ · قسمت ۱ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-11" data-term="Target Population and Sampling"><h2>جامعه آماری و انتخاب نمونه</h2></button>
             <p class="lead">جامعه آماری مجموعه واحدهایی است که می‌خواهیم درباره آن‌ها شناخت پیدا کنیم.</p>
             <div class="research-grid">
@@ -833,7 +880,7 @@
 
         <article class="slide research-slide" id="market-11-02" data-section="جامعه آماری و انتخاب نمونه" data-slide-title="جامعه آماری و انتخاب نمونه" data-lesson-id="lesson-chapter-11">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۱ · بخش ۲ از ۲</span>
+            <span class="kicker">بخش ۱۱ · قسمت ۲ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-11" data-term="Target Population and Sampling"><h2>جامعه آماری و انتخاب نمونه</h2></button>
             <p class="lead">در نمونه‌گیری غیر‌احتمالی، احتمال انتخاب افراد برای پژوهشگر معلوم نیست یا ورود به نمونه بر انتخاب تصادفی استوار نیست.</p>
             <div class="research-grid">
@@ -846,7 +893,7 @@
 
         <article class="slide research-slide" id="market-12-01" data-section="حجم نمونه و حدود اطمینان" data-slide-title="حجم نمونه و حدود اطمینان" data-lesson-id="lesson-chapter-12">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۲ · بخش ۱ از ۲</span>
+            <span class="kicker">بخش ۱۲ · قسمت ۱ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-12" data-term="Sample Size and Confidence Limits"><h2>حجم نمونه و حدود اطمینان</h2></button>
             
             <div class="research-grid">
@@ -859,7 +906,7 @@
 
         <article class="slide research-slide" id="market-12-02" data-section="حجم نمونه و حدود اطمینان" data-slide-title="حجم نمونه و حدود اطمینان" data-lesson-id="lesson-chapter-12">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۲ · بخش ۲ از ۲</span>
+            <span class="kicker">بخش ۱۲ · قسمت ۲ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-12" data-term="Sample Size and Confidence Limits"><h2>حجم نمونه و حدود اطمینان</h2></button>
             <p class="lead">فاصله اطمینان، بازه‌ای است که با روش آماری مشخص و تحت فرض‌های آن، عدم‌قطعیت برآورد را بیان می‌کند.</p>
             <div class="research-grid">
@@ -872,7 +919,7 @@
 
         <article class="slide research-slide" id="market-13-01" data-section="اجرای تحقیق و کنترل کیفیت داده" data-slide-title="اجرای تحقیق و کنترل کیفیت داده" data-lesson-id="lesson-chapter-13">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۳ · بخش ۱ از ۲</span>
+            <span class="kicker">بخش ۱۳ · قسمت ۱ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-13" data-term="Fieldwork and Data Quality Control"><h2>اجرای تحقیق و کنترل کیفیت داده</h2></button>
             
             <div class="research-grid">
@@ -885,7 +932,7 @@
 
         <article class="slide research-slide" id="market-13-02" data-section="اجرای تحقیق و کنترل کیفیت داده" data-slide-title="اجرای تحقیق و کنترل کیفیت داده" data-lesson-id="lesson-chapter-13">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۳ · بخش ۲ از ۲</span>
+            <span class="kicker">بخش ۱۳ · قسمت ۲ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-13" data-term="Fieldwork and Data Quality Control"><h2>اجرای تحقیق و کنترل کیفیت داده</h2></button>
             <p class="lead">پاسخ‌های تکراری، ناسازگاری‌های آشکار، هویت‌های غیرواقعی و الگوهای غیرعادی نیازمند بررسی‌اند.</p>
             <div class="research-grid">
@@ -898,7 +945,7 @@
 
         <article class="slide research-slide" id="market-14-01" data-section="اخلاق پژوهش و استفاده مسئولانه از ابزارها" data-slide-title="اخلاق پژوهش و استفاده مسئولانه از ابزارها" data-lesson-id="lesson-chapter-14">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۴</span>
+            <span class="kicker">بخش ۱۴ · قسمت ۱</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-14" data-term="Research Ethics and Responsible Use of Tools"><h2>اخلاق پژوهش و استفاده مسئولانه از ابزارها</h2></button>
             <p class="lead">اعتماد مشارکت‌کننده بخشی از کیفیت تحقیق است.</p>
             <div class="research-grid">
@@ -911,7 +958,7 @@
 
         <article class="slide research-slide" id="market-15-01" data-section="تحلیل داده‌های کمّی و کیفی" data-slide-title="تحلیل داده‌های کمّی و کیفی" data-lesson-id="lesson-chapter-15">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۵ · بخش ۱ از ۲</span>
+            <span class="kicker">بخش ۱۵ · قسمت ۱ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-15" data-term="Quantitative and Qualitative Data Analysis"><h2>تحلیل داده‌های کمّی و کیفی</h2></button>
             <p class="lead">تحلیل یعنی استفاده منظم از داده برای پاسخ به پرسش تحقیق.</p>
             <div class="research-grid">
@@ -924,7 +971,7 @@
 
         <article class="slide research-slide" id="market-15-02" data-section="تحلیل داده‌های کمّی و کیفی" data-slide-title="تحلیل داده‌های کمّی و کیفی" data-lesson-id="lesson-chapter-15">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۵ · بخش ۲ از ۲</span>
+            <span class="kicker">بخش ۱۵ · قسمت ۲ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-15" data-term="Quantitative and Qualitative Data Analysis"><h2>تحلیل داده‌های کمّی و کیفی</h2></button>
             <p class="lead">در تحلیل کیفی، پژوهشگر متن‌ها و یادداشت‌ها را چند بار می‌خواند، بخش‌های مرتبط را مشخص می‌کند و برای آن‌ها کد می‌گذارد.</p>
             <div class="research-grid">
@@ -937,7 +984,7 @@
 
         <article class="slide research-slide" id="market-16-01" data-section="تفسیر یافته‌ها و مرز نتیجه‌گیری" data-slide-title="تفسیر یافته‌ها و مرز نتیجه‌گیری" data-lesson-id="lesson-chapter-16">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۶ · بخش ۱ از ۲</span>
+            <span class="kicker">بخش ۱۶ · قسمت ۱ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-16" data-term="Interpreting Findings and Limits of Inference"><h2>تفسیر یافته‌ها و مرز نتیجه‌گیری</h2></button>
             
             <div class="research-grid">
@@ -950,7 +997,7 @@
 
         <article class="slide research-slide" id="market-16-02" data-section="تفسیر یافته‌ها و مرز نتیجه‌گیری" data-slide-title="تفسیر یافته‌ها و مرز نتیجه‌گیری" data-lesson-id="lesson-chapter-16">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۶ · بخش ۲ از ۲</span>
+            <span class="kicker">بخش ۱۶ · قسمت ۲ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-16" data-term="Interpreting Findings and Limits of Inference"><h2>تفسیر یافته‌ها و مرز نتیجه‌گیری</h2></button>
             <p class="lead">اهمیت آماری به سازگاری نتیجه با یک مدل و فرض آماری مربوط است.</p>
             <div class="research-grid">
@@ -963,7 +1010,7 @@
 
         <article class="slide research-slide" id="market-17-01" data-section="گزارش تحقیق و استفاده از یافته‌ها" data-slide-title="گزارش تحقیق و استفاده از یافته‌ها" data-lesson-id="lesson-chapter-17">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۷ · بخش ۱ از ۲</span>
+            <span class="kicker">بخش ۱۷ · قسمت ۱ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-17" data-term="Research Reporting and Use of Findings"><h2>گزارش تحقیق و استفاده از یافته‌ها</h2></button>
             <p class="lead">گزارش باید پاسخ پرسش اصلی را قابل فهم کند و هم‌زمان امکان ارزیابی پشتوانه آن را بدهد.</p>
             <div class="research-grid">
@@ -976,7 +1023,7 @@
 
         <article class="slide research-slide" id="market-17-02" data-section="گزارش تحقیق و استفاده از یافته‌ها" data-slide-title="گزارش تحقیق و استفاده از یافته‌ها" data-lesson-id="lesson-chapter-17">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۷ · بخش ۲ از ۲</span>
+            <span class="kicker">بخش ۱۷ · قسمت ۲ از ۲</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-17" data-term="Research Reporting and Use of Findings"><h2>گزارش تحقیق و استفاده از یافته‌ها</h2></button>
             <p class="lead">تصمیم‌گیرنده باید یافته‌ها را در کنار محدودیت منابع و گزینه‌های عملی بسنجد.</p>
             <div class="research-grid">
@@ -989,7 +1036,7 @@
 
         <article class="slide research-slide" id="market-18-01" data-section="معیارهای تشخیص یک تحقیق قابل اتکا" data-slide-title="معیارهای تشخیص یک تحقیق قابل اتکا" data-lesson-id="lesson-chapter-18">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۸</span>
+            <span class="kicker">بخش ۱۸ · قسمت ۱</span>
             <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-18" data-term="Criteria for Trustworthy Research"><h2>معیارهای تشخیص یک تحقیق قابل اتکا</h2></button>
             <p class="lead">یک تحقیق را باید از پیوند اجزای آن ارزیابی کرد.</p>
             <div class="research-grid">
@@ -1000,14 +1047,14 @@
           </div>
         </article>
 
-        <article class="slide research-slide" id="market-19-01" data-section="جمع‌بندی بند ۵" data-slide-title="جمع‌بندی بند ۵" data-lesson-id="lesson-chapter-19">
+        <article class="slide research-slide" id="market-19-01" data-section="جمع‌بندی" data-slide-title="جمع‌بندی" data-lesson-id="lesson-chapter-19">
           <div class="slide-frame">
-            <span class="kicker">فصل ۱۹</span>
-            <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-19" data-term="Market Research Synthesis"><h2>جمع‌بندی بند ۵</h2></button>
+            <span class="kicker">بخش ۱۹ · قسمت ۱</span>
+            <button class="slide-title-link title-lesson-link" type="button" data-lesson-target="lesson-chapter-19" data-term="Market Research Synthesis"><h2>جمع‌بندی</h2></button>
             <p class="lead">تحقیقات بازار از یک مجهول مرتبط با تصمیم آغاز می‌شود و با گردآوری داده پایان نمی‌یابد.</p>
             <div class="research-grid">
-              <div class="topic-list"><div class="topic-item is-accent"><button class="topic-link" type="button" data-lesson-target="lesson-chapter-19" data-term="Market Research Synthesis" aria-label="جمع‌بندی بند ۵؛ بازکردن توضیح در درسنامه"><span class="topic-icon" aria-hidden="true">◈</span><span>جمع‌بندی بند ۵</span></button><button class="term-info" type="button" data-term="Market Research Synthesis" aria-label="نمایش معادل انگلیسی جمع‌بندی بند ۵">EN</button></div></div>
-              <div class="semantic-visual visual-synthesis" style="--turn:31deg" aria-label="تصویرسازی مفهومی اسلاید"><div class="v-venn"><span>جمع‌بندی بند ۵</span><span>شواهد</span><span>تصمیم</span><strong>پیوند</strong></div></div>
+              <div class="topic-list"><div class="topic-item is-accent"><button class="topic-link" type="button" data-lesson-target="lesson-chapter-19" data-term="Market Research Synthesis" aria-label="جمع‌بندی؛ بازکردن توضیح در درسنامه"><span class="topic-icon" aria-hidden="true">◈</span><span>جمع‌بندی</span></button><button class="term-info" type="button" data-term="Market Research Synthesis" aria-label="نمایش معادل انگلیسی جمع‌بندی">EN</button></div></div>
+              <div class="semantic-visual visual-synthesis" style="--turn:31deg" aria-label="تصویرسازی مفهومی اسلاید"><div class="v-venn"><span>جمع‌بندی</span><span>شواهد</span><span>تصمیم</span><strong>پیوند</strong></div></div>
             </div>
             <div class="slide-tools"><button class="lesson-trigger" type="button" data-lesson-target="lesson-chapter-19">درسنامه</button><button class="source-trigger" type="button" data-source-ids="reference-01,reference-02">منابع</button></div>
           </div>
@@ -1079,6 +1126,7 @@
     const brandSub=document.querySelector(".brand-copy span"); if(brandSub) brandSub.textContent="درسنامه تعاملی دوره بازاریابی";
 
     function paragraph(text,klass="") { const p=document.createElement("p"); p.textContent=text; if(klass)p.className=klass; return p; }
+    function lessonHeadingLabel(text){const value=String(text).replace(/^\s*[۰-۹0-9]+\s*/,"");return value==="جمع‌بندی بند ۵"?"جمع‌بندی":value}
     function makeLessonContent(texts){const body=document.createElement("div");body.className="lesson-content";texts.forEach(text=>body.append(paragraph(text,text.trim().startsWith("منبع")?"lesson-source-line":"")));return body}
     function ensureLessonDetails(details){if(details&&details._mountLessonContent){details._mountLessonContent();details._mountLessonContent=null}}
     function buildLesson(){
@@ -1086,12 +1134,12 @@
       const opening=paragraph("در چهار بند نخست، معنای بازاریابی، ارتباط آن با فعالیت‌های دیگر، اهداف کسب‌وکار و منطق سنجش عملکرد را آموختیم. اکنون باید بدانیم اطلاعات لازم برای تصمیم‌گیری چگونه به دست می‌آید و تا چه اندازه قابل اعتماد است. این درس، مسیر تحقیق را از تعریف مسئله تا استفاده از یافته‌ها توضیح می‌دهد. محور یادگیری، فهم منطق هر انتخاب است؛ اینکه چه چیزی را، از چه کسانی، با چه روشی و برای کدام تصمیم بررسی کنیم.","lesson-intro"); doc.append(opening);
       lessonData.forEach(ch=>{
         const chapter=document.createElement("details"); chapter.className="lesson-chapter"; chapter.id=ch.id;
-        const summary=document.createElement("summary"); summary.textContent=ch.title; chapter.append(summary);
+        const summary=document.createElement("summary"); summary.textContent=lessonHeadingLabel(ch.title); chapter.append(summary);
         const introSlot=document.createElement("div");introSlot.className="lesson-intro-slot";chapter.append(introSlot);
         chapter._mountLessonContent=()=>introSlot.replaceWith(makeLessonContent(ch.intro));
         ch.subs.forEach(sub=>{
           const topic=document.createElement("details"); topic.className="lesson-topic"; topic.id=sub.id;
-          const sum=document.createElement("summary"); sum.textContent=sub.title; topic.append(sum);
+          const sum=document.createElement("summary"); sum.textContent=lessonHeadingLabel(sub.title); topic.append(sum);
           topic._mountLessonContent=()=>topic.append(makeLessonContent(sub.body));
           topic.addEventListener("toggle",()=>{if(topic.open)ensureLessonDetails(topic)});chapter.append(topic);
         });
@@ -1143,15 +1191,15 @@
     function focusLessonTarget(id,smooth=true){const target=document.getElementById(id);if(!target)return;openAncestors(target);lastLessonTarget=id;scrollLessonTarget(target,smooth)}
     function openLesson(id,trigger){
       lastDrawerTrigger=trigger||document.activeElement;const target=document.getElementById(id);if(target){openAncestors(target);lastLessonTarget=id;scrollLessonTarget(target,false)}
-      lessonDrawer.classList.add("open");lessonBackdrop.classList.add("open");lessonDrawer.setAttribute("aria-hidden","false");document.body.classList.add("lesson-open");lessonCloseBtn.focus();app.setAttribute("aria-hidden","true");
+      lessonDrawer.classList.add("open");lessonBackdrop.classList.add("open");lessonDrawer.setAttribute("aria-hidden","false");document.body.classList.add("lesson-open");lessonCloseBtn.focus();
     }
     function openSources(ids,trigger){
       lastDrawerTrigger=trigger||document.activeElement;lessonDrawerBody.querySelectorAll(".is-highlighted").forEach(el=>el.classList.remove("is-highlighted"));
       const sourceChapter=[...lessonDrawerBody.querySelectorAll(".lesson-chapter")].find(el=>el.querySelector(":scope>summary")?.textContent.includes("منابع و مسیر مطالعه"));if(sourceChapter)sourceChapter.open=true;
       const targets=ids.map(id=>document.getElementById(id)).filter(Boolean);targets.forEach(t=>{openAncestors(t);t.classList.add("is-highlighted")});const target=targets[0]||sourceChapter;lastLessonTarget=target?.id;if(target)scrollLessonTarget(target,false);
-      lessonDrawer.classList.add("open");lessonBackdrop.classList.add("open");lessonDrawer.setAttribute("aria-hidden","false");document.body.classList.add("lesson-open");lessonCloseBtn.focus();app.setAttribute("aria-hidden","true");
+      lessonDrawer.classList.add("open");lessonBackdrop.classList.add("open");lessonDrawer.setAttribute("aria-hidden","false");document.body.classList.add("lesson-open");lessonCloseBtn.focus();
     }
-    function closeLesson(){if(!lessonDrawer.classList.contains("open"))return;cancelAnimationFrame(lessonScrollFrame);lessonDrawer.classList.remove("open");lessonBackdrop.classList.remove("open");lessonDrawer.setAttribute("aria-hidden","true");document.body.classList.remove("lesson-open");app.removeAttribute("aria-hidden");lastDrawerTrigger?.focus();lastDrawerTrigger=null}
+    function closeLesson(){if(!lessonDrawer.classList.contains("open"))return;cancelAnimationFrame(lessonScrollFrame);lessonDrawer.classList.remove("open");lessonBackdrop.classList.remove("open");lessonDrawer.setAttribute("aria-hidden","true");document.body.classList.remove("lesson-open");lastDrawerTrigger?.focus();lastDrawerTrigger=null}
     function setAllDetails(open){lessonDrawerBody.querySelectorAll("details").forEach(d=>{if(open)ensureLessonDetails(d);d.open=open})}
     function trapFocus(e){const items=[...lessonDrawer.querySelectorAll("button,[href],summary,[tabindex]:not([tabindex='-1'])")].filter(x=>!x.disabled);if(!items.length)return;const first=items[0],last=items.at(-1);if(e.shiftKey&&document.activeElement===first){e.preventDefault();last.focus()}else if(!e.shiftKey&&document.activeElement===last){e.preventDefault();first.focus()}}
 
@@ -1164,6 +1212,7 @@
     sectionLinks.forEach((link,si)=>link.addEventListener("click",()=>go(slides.findIndex(s=>sectionOf(slides.indexOf(s))===si))));
     prevBtn.addEventListener("click",()=>go(index-1));nextBtn.addEventListener("click",()=>go(index+1));themeBtn.addEventListener("click",()=>setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark"));projectorBtn.addEventListener("click",()=>setProjector(!document.body.classList.contains("projector-mode")));fullscreenBtn.addEventListener("click",toggleFullscreen);helpBtn.addEventListener("click",showHelp);mobileMenuBtn.addEventListener("click",()=>setSidebar(!sidebar.classList.contains("open")));sidebarBackdrop.addEventListener("click",()=>setSidebar(false));
     lessonCloseBtn.addEventListener("click",closeLesson);lessonBackdrop.addEventListener("click",closeLesson);lessonExpandBtn.addEventListener("click",()=>setAllDetails(true));lessonCollapseBtn.addEventListener("click",()=>setAllDetails(false));lessonCurrentBtn.addEventListener("click",()=>lastLessonTarget&&focusLessonTarget(lastLessonTarget));
+    document.addEventListener("pointerdown",event=>{if(lessonDrawer.classList.contains("open")&&!lessonDrawer.contains(event.target))closeLesson()},true);
     addEventListener("keydown",e=>{if(lessonDrawer.classList.contains("open")){if(e.key==="Escape")closeLesson();else if(e.key==="Tab")trapFocus(e);return}if(["INPUT","TEXTAREA","SELECT"].includes(document.activeElement?.tagName))return;if(e.key==="ArrowRight"){e.preventDefault();go(index-1)}else if(e.key==="ArrowLeft"||e.key===" "){e.preventDefault();go(index+1)}else if(e.key==="Home"){e.preventDefault();go(0)}else if(e.key==="End"){e.preventDefault();go(slides.length-1)}else if(e.key.toLowerCase()==="f")toggleFullscreen()});
     addEventListener("hashchange",()=>{const i=indexFromHash();if(i>=0){index=i;render()}});addEventListener("resize",scheduleFit);
     document.getElementById("stage").addEventListener("touchstart",e=>{const t=e.changedTouches[0];touchStart={x:t.clientX,y:t.clientY}}, {passive:true});document.getElementById("stage").addEventListener("touchend",e=>{if(!touchStart)return;const t=e.changedTouches[0],dx=t.clientX-touchStart.x,dy=t.clientY-touchStart.y;touchStart=null;if(Math.abs(dx)>70&&Math.abs(dx)>Math.abs(dy)*1.25)go(index+(dx<0?1:-1))},{passive:true});
