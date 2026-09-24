@@ -597,6 +597,44 @@
       .v-stable-triad{grid-template-columns:1fr}.v-stable-triad span{min-height:62px}.v-stable-triad strong{grid-column:auto}.v-stable-meters div{grid-template-columns:1fr;gap:6px}.v-stable-hub>div,.v-stable-prism>div{grid-template-columns:1fr}.v-stable-prism>i{display:none}.v-stable-distribution{grid-template-columns:1fr}.v-stable-distribution span,.v-stable-distribution span.focus{min-height:62px}
       .drawer-control{font-size:11px;padding:8px 5px}.progress-copy{font-size:11px;min-width:47px}.nav-btn{font-size:12px;padding-inline:8px}
     }
+    /* Shared mobile visual contract: mobile geometry always wins over persisted projector rules. */
+    @media(max-width:600px){
+      .slide-frame,.slide.mobile-scroll .slide-frame,.slide-frame.compact-fit{overflow:visible!important;min-height:100%;height:max-content!important}
+      .slide-frame>*{min-width:0;max-width:100%;flex:0 0 auto}.research-grid,.topic-list,.slide-tools{flex:0 0 auto}
+      .hint-toast,.toast{display:none!important}
+      .semantic-visual,body.projector-mode .semantic-visual{flex:none!important;width:100%!important;max-width:100%!important;min-height:240px!important;height:auto!important;max-height:none!important;padding:14px!important;align-content:center;overflow:hidden}
+      .semantic-visual>*{min-width:0;max-width:100%;box-sizing:border-box}.semantic-visual>svg{width:100%;max-width:100%;overflow:hidden}
+      .v-network span,.v-tree strong,.v-tree span,.v-emblem span{inset:auto!important}
+      :is(.visual-lens,.visual-target,.visual-rings){display:grid!important;grid-template-columns:1fr 1fr!important;grid-template-rows:auto auto!important;gap:12px!important;place-items:stretch!important;min-height:270px!important}
+      :is(.visual-lens,.visual-target,.visual-rings) .v-ring{display:none!important}
+      :is(.visual-lens,.visual-target,.visual-rings) .v-core{position:static!important;grid-column:1/-1!important;justify-self:center!important;width:112px!important;height:112px!important;padding:14px!important;font-size:15px!important;box-shadow:0 0 0 11px var(--accent-soft),0 0 0 22px color-mix(in srgb,var(--accent-soft) 55%,transparent)}
+      :is(.visual-lens,.visual-target,.visual-rings) .v-tag{position:static!important;inset:auto!important;max-width:none!important;min-height:64px!important;display:grid!important;place-items:center!important;padding:10px!important;text-align:center!important;font-size:14px!important;line-height:1.55!important}
+      .v-network,.v-tree{position:relative!important;width:100%!important;max-width:none!important;height:auto!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;transform:none!important}
+      .v-network span,.v-tree strong,.v-tree span{position:static!important;inset:auto!important;width:auto!important;max-width:none!important;min-height:68px!important;padding:11px 9px!important;display:grid!important;place-items:center!important;font-size:14px!important;line-height:1.55!important}
+      .v-network .n3{grid-column:1/-1!important;grid-row:2!important;min-height:64px!important}.v-network i,.v-tree i{display:none!important}
+      .visual-blend .v-venn,.visual-synthesis .v-venn{width:100%!important;height:auto!important;display:grid!important;grid-template-columns:1fr 1fr!important;gap:10px!important;transform:none!important}
+      .visual-blend .v-venn span,.visual-synthesis .v-venn span{position:static!important;inset:auto!important;width:auto!important;height:auto!important;min-height:76px!important;padding:11px!important;border-radius:15px!important;font-size:14px!important;line-height:1.55!important}
+      .visual-blend .v-venn span:nth-child(3),.visual-synthesis .v-venn span:nth-child(3){grid-column:1/-1!important}.visual-blend .v-venn strong,.visual-synthesis .v-venn strong{position:static!important;grid-column:1/-1!important;grid-row:auto!important;min-width:112px!important;font-size:14px!important}
+      :is(.visual-signal,.visual-distribution,.visual-evidence){display:flex!important;flex-direction:column!important;justify-content:center!important;gap:12px!important}
+      :is(.visual-signal,.visual-distribution,.visual-evidence) .v-chart{width:100%!important;height:138px!important;max-height:138px!important;flex:0 0 138px!important}
+      :is(.visual-signal,.visual-distribution,.visual-evidence) .v-legend{width:100%!important;display:grid!important;grid-template-columns:1fr!important;gap:7px!important}
+      :is(.visual-signal,.visual-distribution,.visual-evidence) .v-legend span{min-height:44px!important;display:grid!important;place-items:center!important;padding:8px 10px!important;font-size:14px!important;line-height:1.5!important;text-align:center!important}
+      .v-stable-triad,.v-stable-meters,.v-stable-hub,.v-stable-prism,.v-stable-distribution{width:100%!important;max-width:none!important}
+      body.projector-mode .v-stable-meters div,.v-stable-meters div{grid-template-columns:1fr!important;min-height:72px!important;gap:8px!important;padding:11px!important}
+      body.projector-mode .v-stable-meters b,.v-stable-meters b{font-size:14px!important;line-height:1.55!important;text-align:center!important}
+      body.projector-mode .v-stable-triad,.v-stable-triad{grid-template-columns:1fr!important;grid-template-rows:auto!important;gap:9px!important}
+      body.projector-mode .v-stable-triad :is(span,strong),.v-stable-triad :is(span,strong){grid-column:auto!important;grid-row:auto!important;min-height:68px!important}
+      body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route,.v-route{counter-reset:mobile-step;position:relative!important;inset:auto!important;display:grid!important;grid-template-columns:1fr!important;grid-template-rows:none!important;gap:18px!important;width:100%!important}
+      body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route span,.v-route span{counter-increment:mobile-step;position:relative!important;inset:auto!important;grid-column:auto!important;grid-row:auto!important;width:100%!important;max-width:none!important;min-height:62px!important;padding:11px 50px 11px 13px!important;font-size:15px!important;line-height:1.55!important;writing-mode:horizontal-tb!important;overflow-wrap:normal!important;word-break:normal!important}
+      body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route span:after,.v-route span:after{content:counter(mobile-step)!important;position:absolute!important;inset:auto 11px auto auto!important;top:50%!important;transform:translateY(-50%)!important;width:27px!important;height:27px!important;display:grid!important;place-items:center!important;border-radius:9px!important;background:var(--accent)!important;color:#fff!important;font-size:12px!important;line-height:1!important;font-weight:950!important}
+      body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route span:last-child:after,.v-route span:last-child:after{background:var(--complement)!important}
+      body.projector-mode :is(.visual-route,.visual-timeline,.visual-staircase,.visual-bridge) .v-route span+span:before,.v-route span+span:before{content:"↓"!important;position:absolute!important;top:-19px!important;right:50%!important;left:auto!important;transform:translateX(50%)!important;color:var(--accent)!important;font-size:18px!important}
+      .visual-route>svg,.visual-timeline>svg,.visual-staircase>svg,.visual-bridge>svg{display:none!important}
+      body.projector-mode :is(.visual-funnel,.visual-questionnaire,.visual-pipeline,.visual-gates) .v-flow,.v-flow{display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;align-items:center!important;width:100%!important;gap:8px!important}
+      body.projector-mode :is(.visual-funnel,.visual-questionnaire,.visual-pipeline,.visual-gates) .v-flow span,.v-flow span{width:100%!important;max-width:300px!important;min-height:54px!important;padding:10px 12px!important;font-size:15px!important;line-height:1.55!important;writing-mode:horizontal-tb!important;word-break:normal!important;overflow-wrap:normal!important;text-align:center!important}
+      body.projector-mode :is(.visual-funnel,.visual-questionnaire,.visual-pipeline,.visual-gates) .v-flow i,.v-flow i{transform:rotate(-90deg)!important;font-size:22px!important;line-height:1!important}
+      body.projector-mode :is(.visual-funnel,.visual-questionnaire,.visual-pipeline,.visual-gates) .v-track,.v-track{position:relative!important;inset:auto!important;width:100%!important;max-width:300px!important;height:8px!important;margin:6px auto 0!important}
+    }
     @media(prefers-reduced-motion:reduce){.semantic-visual *,.radar-sweep{animation:none!important}}
 
   </style>
@@ -627,7 +665,7 @@
         <div class="brand-mark" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/><path d="M7.5 12.5 10 10l2 1.8 2.5-3.3"/></svg></div>
         <div class="brand-copy"><strong data-deck-title>عنوان ارائه</strong><span>قالب عمومی ارائه HTML</span></div>
       </div>
-      <a class="collection-home" href="https://bizilead.github.io/drehsanazarnik/" aria-label="بازگشت به صفحه اصلی مجموعه ارائه‌ها"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg><span>بازگشت به صفحه اصلی</span></a>
+      <a class="collection-home" href="https://bizilead.github.io/MarketingBasics/" aria-label="بازگشت به صفحه اصلی دوره اصول بازاریابی"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-8 9 8"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg><span>بازگشت به صفحه اصلی</span></a>
       <div class="nav-label">ساختار ارائه</div>
       <nav class="section-nav" id="sectionNav"></nav>
       <div class="sidebar-footer">
